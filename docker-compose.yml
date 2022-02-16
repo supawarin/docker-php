@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 83:80
+    volumes:
+      - ./src:/var/www/html/
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - 33061:3306
+    volumes: 
+      - cars-db_data:/var/lib/mysql-cars
+
+    
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 3808:8080
+
+volumes:
+  cars-db_data:   
