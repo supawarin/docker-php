@@ -1,3 +1,9 @@
+
+<?php session_start();
+
+include('connection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,20 +31,40 @@
   <div class="container">
 
     <form action="index_db.php" method="post" style="width: 40%; margin: 0 auto;" class="text-center mt-5">
-     <h2>LOGIN</h2>
+     <h2>LOGIN</h2> <br />
+
+       <?php if (isset($_SESSION['err_password'])) : ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo $_SESSION['err_password']; ?>
+            </div>
+           <?php endif; ?>
+           <?php if (isset($_SESSION['err_query'])) : ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo $_SESSION['err_query']; ?>
+            </div>
+           <?php endif; ?>
+           <?php if (isset($_SESSION['exist_email'])) : ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo $_SESSION['exist_email']; ?>
+            </div>
+      <?php endif; ?>
+     
+
+
      <!-- Email input -->
      <div class="form-outline mb-4">
-       <input type="email" id="form2Example1" name="email" class="form-control" />
+       <input type="firstname" id="form2Example1" name="firstname" class="form-control" required/>
+       <label class="form-label" for="form2Example1">First name</label>
+     </div>
+     <div class="form-outline mb-4">
+       <input type="email" id="form2Example1" name="email" class="form-control" required/>
        <label class="form-label" for="form2Example1">Email address</label>
      </div>
 
-          <div class="form-outline mb-4">
-       <input type="car_reg" id="form2Example1" name="car_reg" class="form-control" />
-       <label class="form-label" for="form2Example1">Car Reg No</label>
-     </div>
+          
      <!-- Password input -->
      <div class="form-outline mb-4">
-       <input type="password" id="form2Example2" name="password" class="form-control" />
+       <input type="password" id="form2Example2" name="password" class="form-control" required/>
        <label class="form-label" for="form2Example2">Password</label>
      </div>
 
@@ -54,12 +80,12 @@
 
         <div class="col">
            <!-- Simple link -->
-          <a href="#!">Forgot password?</a>
+          <a href="forgot_password.html">Forgot password?</a>
         </div>
       </div>
 
           <!-- Submit button -->
-        <button type="submit" name="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+        <button type="submit" name="login" class="btn btn-primary btn-block mb-4">Login</button>
 
           <!-- Register buttons -->
       <div class="text-center">
