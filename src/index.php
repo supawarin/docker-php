@@ -43,10 +43,7 @@ include('connection.php');
               <?php echo $_SESSION['err_query']; ?>
             </div>
            <?php endif; ?>
-           <?php if (isset($_SESSION['exist_email'])) : ?>
-            <div class="alert alert-danger" role="alert">
-              <?php echo $_SESSION['exist_email']; ?>
-            </div>
+           
       <?php endif; ?>
      
 

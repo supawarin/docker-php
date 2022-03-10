@@ -36,9 +36,25 @@
 <body>
     <div class="container">
 
-      <form action="insert_user.php" method="post" style="width: 40%; margin: 0 auto;" class="text-center mt-5">
+      <form action="register_user.php" method="post" style="width: 40%; margin: 0 auto;" class="text-center mt-5">
 
            <h2>REGISTER</h2><br>
+
+          <?php if (isset($_SESSION['err_password'])) : ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo $_SESSION['err_password']; ?>
+            </div>
+           <?php endif; ?>
+           <?php if (isset($_SESSION['err_query'])) : ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo $_SESSION['err_query']; ?>
+            </div>
+           <?php endif; ?>
+           <?php if (isset($_SESSION['exist_email'])) : ?>
+            <div class="alert alert-danger" role="alert">
+              <?php echo $_SESSION['exist_email']; ?>
+            </div>
+          <?php endif; ?>
 
            
 
