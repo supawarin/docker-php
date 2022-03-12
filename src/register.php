@@ -1,8 +1,10 @@
 <?php
-   session_start();
+   //session_start();
   
 
-   include('connection.php');
+   //include('connection.php');
+   $conn = new mysqli('db','root','example','cars');
+   //$errors = array();
   
 
 ?>
@@ -30,7 +32,8 @@
        rel="stylesheet"
      
     />
-
+    
+    <link rel="stylesheet" href="style.css"> 
     
 </head>
 <body>
@@ -39,23 +42,12 @@
       <form action="register_user.php" method="post" style="width: 40%; margin: 0 auto;" class="text-center mt-5">
 
            <h2>REGISTER</h2><br>
+           
 
-          <?php if (isset($_SESSION['err_password'])) : ?>
-            <div class="alert alert-danger" role="alert">
-              <?php echo $_SESSION['err_password']; ?>
-            </div>
-           <?php endif; ?>
-           <?php if (isset($_SESSION['err_query'])) : ?>
-            <div class="alert alert-danger" role="alert">
-              <?php echo $_SESSION['err_query']; ?>
-            </div>
-           <?php endif; ?>
-           <?php if (isset($_SESSION['exist_email'])) : ?>
-            <div class="alert alert-danger" role="alert">
-              <?php echo $_SESSION['exist_email']; ?>
-            </div>
-          <?php endif; ?>
-
+           
+          
+           
+           
            
 
 
@@ -80,17 +72,21 @@
           <div class="form-outline mb-4">
               <input type="email" name="email" id="form3Example3" class="form-control" required/>
               <label class="form-label" for="form3Example3">Email address</label>
+              
           </div>
 
             <!-- Password input -->
           <div class="form-outline mb-4">
-              <input type="password" name="password" id="form3Example4" class="form-control" required/>
+              <input type="password" name="password" id="password" class="form-control" required/>
+              
               <label class="form-label" for="form3Example4">Password</label>
+              
           </div>
             
              <!-- Confirm Password input -->
           <div class="form-outline mb-4">
-              <input type="password" name="confirm_password" id="form3Example4" class="form-control" required/>
+              <input type="password" name="confirm_password" id="confirm_password" class="form-control" required/>
+              
               <label class="form-label" for="form3Example4">Confirm Password</label>
           </div>
 
@@ -104,23 +100,8 @@
              <!-- Register buttons -->
           <div class="text-center">
              
-             <p>Already a member? <a href="/index.php">Login Here</a></p>
-             <p>or sign up with:</p>
-             <button type="button" class="btn btn-primary btn-floating mx-1">
-                 <i class="fab fa-facebook-f"></i>
-             </button>
-
-             <button type="button" class="btn btn-primary btn-floating mx-1">
-                 <i class="fab fa-google"></i>
-             </button>
-
-             <button type="button" class="btn btn-primary btn-floating mx-1">
-                 <i class="fab fa-twitter"></i>
-             </button>
-
-             <button type="button" class="btn btn-primary btn-floating mx-1">
-                 <i class="fab fa-github"></i>
-             </button>
+             <p>Already a member? <a href="login.html">Login Here</a></p>
+             
            </div>
      </form>
 
@@ -141,16 +122,9 @@
     <!-- MDB -->
    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"
    ></script>
-  
    
+   
+
 </body>
 </html>
 
-<?php
-  if (isset($_SESSION['err-password']) || isset($_SESSION['err_query']) || isset($_SESSION['exist_email'])) {
-     unset($_SESSION['err_password']);
-     unset($_SESSION['err_query']);
-     unset($_SESSION['exist_email']);
-  }
-
-?>

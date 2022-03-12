@@ -51,7 +51,7 @@
    }
    else {
       $_SESSION['err_password'] = "email or password not correct";
-      header('location: index.php'); //user & password incorrect back to login again
+      header('location: login.html'); //user & password incorrect back to login again
    }
 
    ?>
