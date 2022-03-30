@@ -1,10 +1,10 @@
 <?php
-   //session_start();
+   
   
 
    //include('connection.php');
    $conn = new mysqli('db','root','example','cars');
-   //$errors = array();
+   
   
 
 ?>

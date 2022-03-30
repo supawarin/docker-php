@@ -1,53 +1,182 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-html,body{
-    background: #6665ee;
-    font-family: 'Poppins', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Trirong:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  'Raleway', sans-serif ,'Trirong', serif;
 }
-::selection{
-    color: #fff;
-    background: #6665ee;
-}
-.container{
+
+.showcase {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.container .form{
-    background: #fff;
-    padding: 30px 35px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.container .form form .form-control{
-    height: 40px;
-    font-size: 15px;
-}
-.container .form form .forget-pass{
-    margin: -15px 0 15px 0;
-}
-.container .form form .forget-pass a{
-   font-size: 15px;
-}
-.container .form form .button{
-    background: #6665ee;
+    right: 0;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
     color: #fff;
-    font-size: 17px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+    z-index: 2;
+    transition: 0.9s;
+
 }
-.container .form form .button:hover{
-    background: #5757d1;
+
+.showcase.active {
+    right: 300px;
+
 }
-.container .form form .link{
-    padding: 5px 0;
+
+.showcase header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
-.container .form form .link a{
-    color: #6665ee;
+
+.logo {
+    cursor: pointer;
 }
-.container .login-form form p{
-    font-size: 14px;
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: url(https://i.ibb.co/HrfVRcx/menu.png);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
+    cursor: pointer;
+
+
+    
+
 }
-.container .row .alert{
-    font-size: 14px;
+
+.toggle.active {
+    background: url(https://i.ibb.co/rt3HybH/close.png);
+    background-repeat: no-repeat;
+    background-size: 25px;
+    background-position: center;
+    cursor: pointer;
 }
+.menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.menu ul {
+    position: relative;
+    list-style: none;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    font-size: 24px;
+    line-height: 40px;
+    color: black;
+}
+
+.menu ul li a:hover {
+    color: mediumturquoise;
+}
+.showcase video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+
+
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #34c4f0;
+    mix-blend-mode: overlay;
+
+}
+
+.text {
+    position: relative;
+    z-index: 10;
+}
+
+.text h1 {
+    font-size: 4em;
+    font-weight: 800;
+    line-height: 1.5em;
+    
+}
+
+.text h2 {
+    font-size: 3em;
+    font-weight: 600;
+    line-height: 1em;
+    
+}
+
+.text p {
+    font-size: 1.5em;
+    margin: 20px 0;
+    font-weight: 400;
+    max-width: 800px;
+
+}
+.text a {
+    display: inline-block;
+    font-size: 1.5em;
+    font-weight: 600;
+    background: #fff;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: black;
+    margin-top: 10px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+
+
+}
+.text a:hover {
+    background-color: #046fa1;
+    color: #fff;
+
+}
+
+@media(max-width: 798px) {
+    
+    .showcase,
+    .showcase header {
+        padding: 40px;
+
+    }
+    .text h1 {
+        font-size: 3em;
+
+    }
+    .text h2 {
+        font-size: 2em;
+    }
+}
+

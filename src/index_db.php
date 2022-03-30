@@ -25,7 +25,7 @@
             }
             else if ($row['status'] == 'A') {
                $_SESSION['firstname'] = $row['firstname'];
-               header('location: admin_page.php');
+               header('location: admin.php');
             }
             
 

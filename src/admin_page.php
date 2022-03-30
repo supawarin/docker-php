@@ -4,7 +4,7 @@
   
   if (!isset($_SESSION['firstname'])) {
     $_SESSION['msg'] = "You must login first";
-    header('location: index.php');
+    header('location: index.html');
   }
 
 
@@ -55,7 +55,7 @@
           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>   Hello , <?php  echo $_SESSION['firstname']; ?>     <span class="caret"></span></a></td>
                
                <ul class="dropdown-menu">
-               <li><a href="#">Seting</a></li>
+               <li><a href="userProfile.php">Seting</a></li>
                <li><a href="change_password.php" target="_blank">Change Password</a></li>
                <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
             </ul>

@@ -4,7 +4,7 @@
   
   if (!isset($_SESSION['firstname'])) {
     $_SESSION['msg'] = "You must login first";
-    header('location: index.php');
+    header('location: index.html');
   }
 
 
@@ -67,9 +67,6 @@
 
     <div class="container">
       <div class="user_name" style="float:right;">
-        <!--<h1>Hello , <?php  echo $_SESSION['firstname']; 
-         //echo '<a href="logout.php"><span>Logout</span></a></li>'; ?></h1>
-        <h3 class="logout" style="float:right; " > <?php echo '<a href="logout.php"><span>Logout</span></a></li>'; ?></h3>-->
         
       </div>
       <h2>example cars</h2>
