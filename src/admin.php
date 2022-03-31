@@ -609,7 +609,7 @@
                   
                   <div class="dropdown-content">
                       <ul class="dropdown-menu">
-                          <li><a href="userProfile.php">Seting</a></li>
+                          <li><a href="edit_accounts.php">Seting</a></li>
                           <li><a href="change_password.php" target="_blank">Change Password</a></li>
                           <li><a href="logout.php"> Logout</a></li>
                           

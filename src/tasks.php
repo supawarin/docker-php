@@ -316,9 +316,9 @@ include('connection.php');
                       Hello,<?php  echo $_SESSION['firstname']; ?><img src="img/avatar-11.png" width="30px" height="30px" class="logo-admin">
                    </button>
                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <li><a class="dropdown-item" href="#">Setting</a></li>
-                     <li><a class="dropdown-item" href="#">Change Password</a></li>
-                     <li><a class="dropdown-item" href="#">Logout</a></li>
+                     <li><a class="dropdown-item" href="edit_accounts.php">Setting</a></li>
+                     <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
+                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                    </ul>
              </div>
 

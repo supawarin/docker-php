@@ -316,9 +316,9 @@ include('connection.php');
                       Hello,<?php  echo $_SESSION['firstname']; ?><img src="img/avatar-11.png" width="30px" height="30px" class="logo-admin">
                    </button>
                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <li><a class="dropdown-item" href="#">Setting</a></li>
-                     <li><a class="dropdown-item" href="#">Change Password</a></li>
-                     <li><a class="dropdown-item" href="#">Logout</a></li>
+                     <li><a class="dropdown-item" href="edit_accounts.php">Setting</a></li>
+                     <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
+                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                    </ul>
              </div>
 
@@ -334,8 +334,8 @@ include('connection.php');
 
                             </ol>
                        </nav>
-                       <h2>Accounts List</h2><br />
-                        <a href="insert_accounts.php" class="btn btn-success mb-4">Add +</a>
+                       <h2>Accounts List / Users</h2><br />
+                        <a href="form_accounts.php" class="btn btn-success mb-4">Add +</a>
                
 
 
@@ -370,8 +370,8 @@ include('connection.php');
                             <td><?php echo $row["firstname"]; ?></td>
                             <td><?php echo $row["lastname"]; ?></td>
                             <td><?php echo $row["email"]; ?></td>
-                            <td><a href="" class="btn btn-warning">Edit</a></td>
-                            <td><a href="delete_accounts.php" class="btn btn-danger">Delete</a></td>
+                            <td><a href="edit_accounts.php?id=<?=$row["id"]?>" class="btn btn-warning">Edit</a></td>
+                            <td><a href="delete_accounts.php?id=<?=$row["id"]?>" class="btn btn-danger" onclick="Del(this.href);return false;">Delete</a></td>
                        </tr>
                          <?php endwhile ?>
                     </tbody>
@@ -410,6 +410,17 @@ include('connection.php');
          $(document).ready(function() {
          $('#list-users').DataTable();
          } );
+     </script>
+
+     <script language="JavaScript">
+         function Del(mypage){
+             var agree=confirm("Do you want to delete data?");
+             if(agree){
+                 window.location=mypage;
+             }
+
+         }
+
      </script>
               
      </body>

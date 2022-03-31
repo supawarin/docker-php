@@ -20,7 +20,7 @@ include('connection.php');
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Mopdel Page</title>
+      <title>Model Page</title>
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -316,9 +316,9 @@ include('connection.php');
                       Hello,<?php  echo $_SESSION['firstname']; ?><img src="img/avatar-11.png" width="30px" height="30px" class="logo-admin">
                    </button>
                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <li><a class="dropdown-item" href="#">Setting</a></li>
-                     <li><a class="dropdown-item" href="#">Change Password</a></li>
-                     <li><a class="dropdown-item" href="#">Logout</a></li>
+                     <li><a class="dropdown-item" href="edit_accounts.php">Setting</a></li>
+                     <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
+                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                    </ul>
              </div>
 

@@ -1,4 +1,7 @@
 <?php
+//ini_set('display_errors', 1);
+      //ini_set('display_startup_errors', 1);
+      //error_reporting(E_ALL);
 session_start();
 
 include('connection.php');
@@ -20,7 +23,7 @@ include('connection.php');
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Documents Page</title>
+      <title>Add New Accounts Page</title>
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,19 +259,19 @@ include('connection.php');
                       <span>Dashboard</span></a>
                   </li>
                   <li>
-                      <a href="customers.php" class="nav-link "><span class="las la-users"></span>
+                      <a href="customers.php" class="nav-link"><span class="las la-users"></span>
                       <span>Customers</span></a>
                   </li>
                   <li>
-                      <a href="tasks.php" class="nav-link"><span class="las la-clipboard-list"></span>
+                      <a href="tasks.php" class="nav-link "><span class="las la-clipboard-list"></span>
                       <span>Tasks</span></a>
                   </li>
                   <li>
-                      <a href="order.php" class="nav-link"><span class="las la-shopping-bag"></span>
+                      <a href="order.php" class="nav-link "><span class="las la-shopping-bag"></span>
                       <span>Orders</span></a>
                   </li>
                   <li>
-                      <a href="accounts.php" class="nav-link"><span class="las la-user-circle"></span>
+                      <a href="accounts.php" class="nav-link active"><span class="las la-user-circle"></span>
                       <span>Accounts</span></a>
                   </li>
                   <li>
@@ -280,7 +283,7 @@ include('connection.php');
                       <span>Model cars</span></a>
                   </li>
                   <li>
-                      <a href="documents.php" class="nav-link active"><span class="las la-file"></span>
+                      <a href="documents.php" class="nav-link"><span class="las la-file"></span>
                       <span>Documents</span></a>
                   </li>
                   <li>
@@ -301,7 +304,7 @@ include('connection.php');
               <p>
                   <label for="menu">
                       <span class="las la-bars"></span>
-                  </label><span class="accueil">Documents</span>
+                  </label><span class="accueil">Add New Accounts</span>
                   
               </p>
 
@@ -330,12 +333,46 @@ include('connection.php');
                <div class="name_table">
                    <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Documents</a></li>
+                            <li class="breadcrumb-item"><a href="accounts.php"> Accounts list</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Overview</li>
 
                         </ol>
                     </nav>
-                   <h2>Documents list </h2><br />
+                   <h2>Add New Accounts / user </h2><br />
+
+                   
+
+
+                   <form method="POST" action="insert_accounts.php" class="row g-3" name="new_account" >
+                       <div class="col-md-5">
+                           <label for="firstname" class="form-label">Firstname</label>
+                          <input type="text" name="firstname"  class="form-control" placeholder="First name" aria-label="First name" required />
+                       </div>
+                       <div class="col-md-5">
+                           <label for="lastname" class="form-label">Lastname</label>
+                          <input type="text" name="lastname" class="form-control" placeholder="Last name" aria-label="Last name" required />
+                       </div><br /><br />
+                       <div class="col-10">
+                           <label for="email" class="form-label">Email</label>
+                          <input type="email" name="email" class="form-control" placeholder="email" aria-label="email" required />
+                       </div>
+                       <div class="col-md-5">
+                           <label for="password" class="form-label">Password</label>
+                          <input type="password" name="password" class="form-control" placeholder="password" aria-label="password" required />
+                       </div>
+                       <div class="col-md-5">
+                           <label for="confirm_password" class="form-label">Confirm Password</label>
+                          <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" aria-label="confirm_password" required />
+                       </div><br /><br />
+                       <div class="col-12">
+
+                       <input type="submit" value="Submit" class="btn btn-success">
+                       <a href="accounts.php" class="btn btn-danger">Cancel</a>
+                            
+                            
+                        </div>
+
+                   </form>
 
                    
                </div>
