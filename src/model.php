@@ -288,6 +288,10 @@ include('connection.php');
                       <span>Calendar</span></a>
                   </li>
                   <li>
+                      <a href="timeslips.php" class="nav-link "><span class="las la-file-invoice"></span>
+                      <span>Timeslips</span></a>
+                  </li>
+                  <li>
                       <a href="invoice.php" class="nav-link"><span class="las la-file-invoice"></span>
                       <span>Invoices</span></a>
                   </li>
@@ -336,6 +340,7 @@ include('connection.php');
                         </ol>
                     </nav>
                    <h2>Model List </h2><br />
+                   <a href="form_model.php" class="btn btn-success mb-4">Add +</a>
 
                    <table class="table table-hover" width="90%" name="model" id="model">
                        <thead class="table-light">
@@ -346,6 +351,8 @@ include('connection.php');
                              <th width="20%">image</th>
                              <th while="10%">price</th>
                              <th while="20%">color</th>
+                             <th while="10%">Edit</th>
+                             <th while="10%">Delete</th>
             
 
                             </tr>
@@ -367,6 +374,8 @@ include('connection.php');
                              <td><?php echo $row["price"]; ?></td>
                        
                              <td><?php echo $row["color"]; ?></td>
+                              <td><a href="edit_model.php?id=<?=$row["id"]?>" class="btn btn-warning">Edit</a></td>
+                              <td><a href="delete_model.php?id=<?=$row["id"]?>" class="btn btn-danger" onclick="Del(this.href);return false;">Delete</a></td>
                          
                             </tr>
                 
@@ -386,6 +395,8 @@ include('connection.php');
                              <th width="20%">image</th>
                              <th while="10%">price</th>
                              <th while="20%">color</th>
+                             <th while="10%">Edit</th>
+                             <th while="10%">Delete</th>
             
 
                             </tr>
@@ -409,6 +420,17 @@ include('connection.php');
          $(document).ready(function() {
          $('#model').DataTable();
          } );
+     </script>
+
+     <script language="JavaScript">
+         function Del(mypage){
+             var agree=confirm("Do you want to delete data?");
+             if(agree){
+                 window.location=mypage;
+             }
+
+         }
+
      </script>
               
      </body>

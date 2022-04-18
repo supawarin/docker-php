@@ -308,7 +308,7 @@ include('connection.php');
               <p>
                   <label for="menu">
                       <span class="las la-bars"></span>
-                  </label><span class="accueil">Add New Accounts</span>
+                  </label><span class="accueil">Edit Accounts</span>
                   
               </p>
 

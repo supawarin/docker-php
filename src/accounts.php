@@ -288,6 +288,10 @@ include('connection.php');
                       <span>Calendar</span></a>
                   </li>
                   <li>
+                      <a href="timeslips.php" class="nav-link "><span class="las la-file-invoice"></span>
+                      <span>Timeslips</span></a>
+                  </li>
+                  <li>
                       <a href="invoice.php" class="nav-link"><span class="las la-file-invoice"></span>
                       <span>Invoices</span></a>
                   </li>
@@ -311,11 +315,13 @@ include('connection.php');
               </div>
 
               <div class="dropdown">
+                  
                    
                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Hello,<?php  echo $_SESSION['firstname']; ?><img src="img/avatar-11.png" width="30px" height="30px" class="logo-admin">
                    </button>
                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     
                      <li><a class="dropdown-item" href="edit_accounts.php">Setting</a></li>
                      <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
                      <li><a class="dropdown-item" href="logout.php">Logout</a></li>

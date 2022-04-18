@@ -33,7 +33,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
 
-
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
       <!----------------------------style css---------------->
       <style>
           * {
@@ -57,7 +57,7 @@
 
             .sidebar-brand {
                 height: 90px;
-                padding: 1rem 0rem 1rem 2rem;
+                padding: 1rem 0rem 2rem 3rem;
                 color: #fff;
 
             }
@@ -74,7 +74,7 @@
             .sidebar-menu li {
                 width:100%;
                 margin-bottom: 1.3rem;
-                padding-left: 1rem;
+                
 
             }
             .sidebar-menu a {
@@ -83,10 +83,17 @@
                 color: #fff;
                 font-size: 1.1rem;
             }
+            .sidebar-menu a:hover{
+                background: #fff;
+                
+                color: #39a693;
+                border-radius: 30px 0px 0px 30px;
+                
+            }
             .sidebar-menu a.active {
                 background: #fff;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+                padding-top: .5rem;
+                padding-bottom: .5rem;
                 color: #39a693;
                 border-radius: 30px 0px 0px 30px;
             }
@@ -147,7 +154,15 @@
                 margin-right: 6rem;
 
             }
-            
+            table{
+                 
+                 border-collapse: collapse;
+             }
+             th,td{
+                 text-align: center;
+                 padding: 1rem;
+             }
+
             
             .logo-admin {
                 cursor: pointer;
@@ -182,6 +197,30 @@
                 
 
             }
+            #menu {
+                 display: none;
+             }
+             #menu:checked ~ .sidebar{
+                 width: 80px;
+
+                 
+             }
+             
+             #menu:checked ~ .sidebar .sidebar-brand, h1 span:last-child,
+             #menu:checked ~ .sidebar li a span:last-child{
+                 display: none;
+             }
+             #menu:checked ~ .main-content{
+                 margin-left: 80px;
+             }
+             #menu:checked ~ .main-content header{
+                 width: calc(100% - 80px);
+                 left: 80px;
+             }
+             .la-bars{
+                 cursor: pointer;
+                 font-size: 1.3rem;
+             }
             section {
                 
                 
@@ -409,7 +448,8 @@
                  display: none;
              }
              #menu:checked ~ .sidebar{
-                 width: 60px;
+                 width: 80px;
+
                  
              }
              #menu:checked ~ .sidebar .sidebar-brand, h1 span:last-child,
@@ -417,11 +457,11 @@
                  display: none;
              }
              #menu:checked ~ .main-content{
-                 margin-left: 60px;
+                 margin-left: 80px;
              }
              #menu:checked ~ .main-content header{
-                 width: calc(100% - 60px);
-                 left: 60px;
+                 width: calc(100% - 80px);
+                 left: 80px;
              }
              @media only screen and (max-width: 960px){
                  .cards{
@@ -541,43 +581,47 @@
           <div class="sidebar-menu">
               <ul>
                   <li>
-                      <a href="admin.php" class="active"><span class="las la-igloo"></span>
+                      <a href="admin.php" class="nav-link active"><span class="las la-igloo"></span>
                       <span>Dashboard</span></a>
                   </li>
                   <li>
-                      <a href="customers.php"><span class="las la-users"></span>
+                      <a href="customers.php" class="nav-link"><span class="las la-users"></span>
                       <span>Customers</span></a>
                   </li>
                   <li>
-                      <a href="tasks.php"><span class="las la-clipboard-list"></span>
+                      <a href="tasks.php" class="nav-link"><span class="las la-clipboard-list"></span>
                       <span>Tasks</span></a>
                   </li>
                   <li>
-                      <a href="order.php"><span class="las la-shopping-bag"></span>
+                      <a href="order.php" class="nav-link"><span class="las la-shopping-bag"></span>
                       <span>Orders</span></a>
                   </li>
                   <li>
-                      <a href="accounts.php"><span class="las la-user-circle"></span>
+                      <a href="accounts.php" class="nav-link"><span class="las la-user-circle"></span>
                       <span>Accounts</span></a>
                   </li>
                   <li>
-                      <a href="inventory.php"><span class="las la-receipt"></span>
+                      <a href="inventory.php" class="nav-link"><span class="las la-receipt"></span>
                       <span>Inventory</span></a>
                   </li>
                   <li>
-                      <a href="model.php"><span class="las la-car-side"></span>
+                      <a href="model.php" class="nav-link"><span class="las la-car-side"></span>
                       <span>Model cars</span></a>
                   </li>
                   <li>
-                      <a href="documents.php"><span class="las la-file"></span>
+                      <a href="documents.php" class="nav-link"><span class="las la-file"></span>
                       <span>Documents</span></a>
                   </li>
                   <li>
-                      <a href="calendar.php"><span class="las la-calendar-alt"></span>
+                      <a href="calendar.php" class="nav-link"><span class="las la-calendar-alt"></span>
                       <span>Calendar</span></a>
                   </li>
                   <li>
-                      <a href="invoice.php" ><span class="las la-file-invoice"></span>
+                      <a href="timeslips.php" class="nav-link "><span class="las la-file-invoice"></span>
+                      <span>Timeslips</span></a>
+                  </li>
+                  <li>
+                      <a href="invoice.php" class="nav-link"><span class="las la-file-invoice"></span>
                       <span>Invoices</span></a>
                   </li>
                   
@@ -599,32 +643,31 @@
                   <input type="search" name="" placehoder="Search here" />
               </div>
 
-              <div id="dropdown" class="user-wrapper">
+              
+              
                   
-                  <div>
-                      <h3>Hi, <?php  echo $_SESSION['firstname']; ?></h3>
-                      
-                  </div>
-                  <img src="img/avatar-11.png" width="40px" height="40px" class="logo-admin">
-                  
-                  <div class="dropdown-content">
-                      <ul class="dropdown-menu">
-                          <li><a href="edit_accounts.php">Seting</a></li>
-                          <li><a href="change_password.php" target="_blank">Change Password</a></li>
-                          <li><a href="logout.php"> Logout</a></li>
-                          
-                      </ul>
-                  </div>
+                <div class="dropdown">  
+                   <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                      Hello,<?php  echo $_SESSION['firstname']; ?><img src="img/avatar-11.png" width="30px" height="30px" class="logo-admin">
+                   </button>
+                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     
+                     <li><a class="dropdown-item" href="edit_accounts.php">Setting</a></li>
+                     <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
+                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                   </ul>
+                </div>
 
-              </div>
+              
           </header>
            <!---------------------section content--------------------->
           <section>
-              <div class="cards">
+              <div class="cards" >
+                  
                   <div class="card-single">
                       <div>
                          <h1>55</h1>
-                         <small>Customers</small>
+                         <a href="customers.php"><small>Customers</small></a>
                       </div>
                       <div>
                          <span class="las la-users"></span>
@@ -635,7 +678,7 @@
                   <div class="card-single">
                       <div>
                           <h1>20</h1>
-                          <small>Orders</small>
+                          <a href="order.php"><small>Orders</small></a>
                       </div>
                       <div>
                           <span class="las la-shopping-bag"></span>
@@ -646,7 +689,7 @@
                   <div class="card-single">
                       <dia>
                           <h1>39</h1>
-                          <small>Tasks</small>
+                          <a href="tasks.php"><small>Tasks</small></a>
                       </dia>
                       <div>
                          <span class="las la-clipboard-list"></span>
@@ -887,6 +930,12 @@
           </section>
 
       </div>
+
+
+
+
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 
   </body>
     

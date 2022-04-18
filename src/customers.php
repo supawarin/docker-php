@@ -6,10 +6,10 @@ include('connection.php');
 
 
 
-  $sql = "SELECT  *  FROM cars";
+  //$sql = "SELECT  *  FROM cars";
   
   
-  $result = $conn->query($sql);
+  //$result = $conn->query($sql);
 
 ?>
 
@@ -288,6 +288,10 @@ include('connection.php');
                       <span>Calendar</span></a>
                   </li>
                   <li>
+                      <a href="timeslips.php" class="nav-link"><span class="las la-file-invoice"></span>
+                      <span>Timeslips</span></a>
+                  </li>
+                  <li>
                       <a href="invoice.php" class="nav-link"><span class="las la-file-invoice"></span>
                       <span>Invoices</span></a>
                   </li>
@@ -337,6 +341,70 @@ include('connection.php');
                     </nav>
                    <h2>Customers list </h2><br />
 
+                   <a href="form_customer.php" class="btn btn-success mb-4">Add +</a>
+               
+
+
+
+
+               <table class="table table-hover" width="95%" name="list-customer" id="list-customer">
+                  <thead class="table-light">
+                     <tr>
+                         <th><b>Id</b></th>
+                         <th><b>Company Name</b></th>
+                         <th><b>Contact Name</b></th>
+                         <th><b>Email</b></th>
+                         <th><b>Address</b></th>
+                         <th><b>Phone</b></th>
+                         
+                         <th><b>Edit</b></th>
+                         <th><b>Delete</b></th>
+                      
+
+                        </tr>
+                 </thead>
+                  <tbody>
+                        <?php
+                            $sql = "SELECT  *  FROM customers";
+  
+  
+                           $result = $conn->query($sql);
+                           //$result=mysqli_query($conn,$sql);
+                           while($row = $result->fetch_assoc()):
+                          ?>
+
+
+                        <tr>
+                            <td><?php echo $row["id"]; ?></td>
+                            <td><?php echo $row["company"]; ?></td>
+                            <td><?php echo $row["contact"]; ?></td>
+                            <td><?php echo $row["email"]; ?></td>
+                            <td><?php echo $row["address"]; ?></td>
+                            <td><?php echo $row["phone"]; ?></td>
+
+                            <td><a href="edit_customer.php?id=<?=$row["id"]?>" class="btn btn-warning">Edit</a></td>
+                            <td><a href="delete_customer.php?id=<?=$row["id"]?>" class="btn btn-danger" onclick="Del(this.href);return false;">Delete</a></td>
+                       </tr>
+                         <?php endwhile ?>
+                    </tbody>
+                    <tfoot class="table-light">
+                     <tr>
+                         <th><b>Id</b></th>
+                         <th><b>Company Name</b></th>
+                         <th><b>Contact Name</b></th>
+                         <th><b>Email</b></th>
+                         <th><b>Address</b></th>
+                         <th><b>Phone</b></th>
+                         
+                         <th><b>Edit</b></th>
+                         <th><b>Delete</b></th>
+                      
+
+                        </tr>
+                 </tfoot>
+                  
+                </table>
+
                    
                </div>
                
@@ -352,6 +420,23 @@ include('connection.php');
      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
      
+
+     <script>
+         $(document).ready(function() {
+         $('#list-customer').DataTable();
+         } );
+     </script>
+
+     <script language="JavaScript">
+         function Del(mypage){
+             var agree=confirm("Do you want to delete data?");
+             if(agree){
+                 window.location=mypage;
+             }
+
+         }
+
+     </script>
               
      </body>
 

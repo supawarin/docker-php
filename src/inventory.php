@@ -20,7 +20,7 @@ include('connection.php');
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Inventorys Page</title>
+      <title>Inventory Page</title>
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -256,15 +256,15 @@ include('connection.php');
                       <span>Dashboard</span></a>
                   </li>
                   <li>
-                      <a href="customers.php" class="nav-link"><span class="las la-users"></span>
+                      <a href="customers.php" class="nav-link "><span class="las la-users"></span>
                       <span>Customers</span></a>
                   </li>
                   <li>
-                      <a href="tasks.php" class="nav-link "><span class="las la-clipboard-list"></span>
+                      <a href="tasks.php" class="nav-link"><span class="las la-clipboard-list"></span>
                       <span>Tasks</span></a>
                   </li>
                   <li>
-                      <a href="order.php" class="nav-link "><span class="las la-shopping-bag"></span>
+                      <a href="order.php" class="nav-link"><span class="las la-shopping-bag"></span>
                       <span>Orders</span></a>
                   </li>
                   <li>
@@ -288,6 +288,10 @@ include('connection.php');
                       <span>Calendar</span></a>
                   </li>
                   <li>
+                      <a href="timeslips.php" class="nav-link"><span class="las la-file-invoice"></span>
+                      <span>Timeslips</span></a>
+                  </li>
+                  <li>
                       <a href="invoice.php" class="nav-link"><span class="las la-file-invoice"></span>
                       <span>Invoices</span></a>
                   </li>
@@ -301,7 +305,7 @@ include('connection.php');
               <p>
                   <label for="menu">
                       <span class="las la-bars"></span>
-                  </label><span class="accueil">Inventorys</span>
+                  </label><span class="accueil">Inventory</span>
                   
               </p>
 
@@ -330,12 +334,12 @@ include('connection.php');
                <div class="name_table">
                    <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Inventorys</a></li>
+                            <li class="breadcrumb-item"><a href="#">Inventory</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Overview</li>
 
                         </ol>
                     </nav>
-                   <h2>Inventorys list </h2><br />
+                   <h2>Inventory list </h2><br />
 
                    
                </div>

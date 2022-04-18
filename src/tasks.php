@@ -288,6 +288,10 @@ include('connection.php');
                       <span>Calendar</span></a>
                   </li>
                   <li>
+                      <a href="timeslips.php" class="nav-link "><span class="las la-file-invoice"></span>
+                      <span>Timeslips</span></a>
+                  </li>
+                  <li>
                       <a href="invoice.php" class="nav-link"><span class="las la-file-invoice"></span>
                       <span>Invoices</span></a>
                   </li>
