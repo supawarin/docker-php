@@ -13,9 +13,10 @@ if(isset($_POST["id"]))
    $start = $_POST['start'];
    $end = $_POST['end'];
    $id = $_POST['id'];
+   $employee = $_POST['employee'];
    $hours = $_POST['hours'];
    $description = $_POST['description'];
-   $sql = "UPDATE events SET title='$title', start_event='$start', end_event='$end', hours='$hours', description='$description'  WHERE id = $id";
+   $sql = "UPDATE events SET title='$title', start_event='$start', end_event='$end', employee='$employee', hours='$hours', description='$description'  WHERE id = $id";
    $connect->query($sql);
 }
 

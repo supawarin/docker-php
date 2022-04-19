@@ -5,7 +5,7 @@
 //echo "loading calendar items please wait"; die;
     $connect = mysqli_connect('db', 'root', 'example', 'cars');
    
-
+    
     $query = "SELECT * FROM events";
 
     if ($result = $connect->query($query)) {

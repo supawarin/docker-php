@@ -340,7 +340,62 @@ include('connection.php');
               
           </header>
                 
-          
+          <!---------modal--------->
+          <div class="modal" tabindex="-1" id="addEvent">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="insert_timeslip.php" class="row g-3" name="new_account" >
+                       
+                       <div class="col-md-12">
+                           <label for="title" class="form-label">Title</label>
+                          <input type="text" name="title" class="form-control" placeholder="title" aria-label="title" required />
+                       </div><br /><br />
+                       <div class="col-md-12">
+                           <label for="employee" class="form-label">Employee</label>
+                          <select class="form-select" id="employee" name="employee">
+      <option>Supaporn</option>
+      <option>Ekachai</option>
+      <option>Praporn</option>
+      <option>Elisha</option>
+    </select>
+                       </div><br /><br />
+                       <div class="col-12">
+                           <label for="start_event" class="form-label">Start event</label>
+                          <input type="datetime-local" name="start_event" class="form-control" placeholder="Start event" aria-label="start_event" required />
+                       </div>
+                       <div class="col-md-12">
+                           <label for="end_event" class="form-label">End event</label>
+                          <input type="datetime-local" name="end_event" class="form-control" placeholder="End event" aria-label="end_event" required />
+                       </div>
+                       <div class="col-md-12">
+                           <label for="hours" class="form-label">hours</label>
+                          <input type="hours" name="hours" class="form-control" placeholder="hours" aria-label="hours" required />
+                       </div><br /><br />
+                       <div class="col-md-12">
+                           <label for="description">Description</label>
+                           <textarea class="form-control" rows="5"  id="description" name="description"></textarea>
+                       </div>
+                       <div class="col-12">
+
+                       <input type="submit" value="Submit" class="btn btn-success">
+                       <a href="calendar.php" class="btn btn-danger">Cancel</a>
+                            
+                            
+                        </div>
+
+                   </form>
+      </div>
+      <div class="modal-footer">
+          <h3>CARS </h3>
+      </div>
+    </div>
+  </div>
+</div>
                
 
                <div class="name_table">
@@ -384,8 +439,9 @@ include('connection.php');
                             left:'prev,next today',
                             right:'month,agendaWeek,agendaDay,listYear'
                         },
-                        events:'load_calendar.php',
-                         //events: 'https://fullcalendar.io/api/demo-feeds/events.json?overload-day',
+                        events: 
+                            'load_calendar.php',
+                         
                         selectable:true,
                         selectHelper:true,
                         
@@ -400,29 +456,7 @@ include('connection.php');
   
                         select:function(start,end,allDay)
                         {
-                            var title = prompt("Enter Event Title");
-                            
-
-                            if(title){
-                                var start = $.fullCalendar.formatDate(start,"Y-MM-DD HH:mm:ss");
-                                var end = $.fullCalendar.formatDate(end,"Y-MM-DD HH:mm:ss");
-                                //var hours = event.hours;
-                                //var description = event.description;
-
-                                $.ajax({
-                                    url: "insert_calendar.php",
-                                    type:'POST',
-                                    data:{title:title, start:start, end:end 
-                                     },
-                                    
-                                    
-                                    success:function(){
-                                        calendar.fullCalendar('refetchEvents');
-
-                                        alert("Added Successfully");
-                                    }
-                                })
-                            }
+                            $('#addEvent').modal('toggle');
                         },
                         editable:true,
                         
@@ -432,12 +466,13 @@ include('connection.php');
                             var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                             var title = event.title;
                             var id = event.id;
-                            //var hours = event.hours;
-                            //var description = event.description;
+                            var employee = event.employee;
+                            var hours = event.hours;
+                            var description = event.description;
                             $.ajax({
                                url:"update_calendar.php",
                                type:"POST",
-                               data:{title:title, start:start, end:end, id:id
+                               data:{title:title, start:start, end:end, id:id, employee:employee, hours:hours, description:description
                             },
                                success:function(){
                                    calendar.fullCalendar('refetchEvents');
@@ -452,12 +487,13 @@ include('connection.php');
                             var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
                             var title = event.title;
                             var id = event.id;
-                            //var hours = event.hours;
-                            //var description = event.description;
+                            var employee = event.employee;
+                            var hours = event.hours;
+                            var description = event.description;
                             $.ajax({
                                 url:"update_calendar.php",
                                 type:"POST",
-                                data:{title:title, start:start, end:end, id:id
+                                data:{title:title, start:start, end:end, id:id, employee:employee, hours:hours, description:description
                                 },
                                 success:function()
                                 {
@@ -469,21 +505,8 @@ include('connection.php');
 
                         eventClick:function(event)
                         {
-                            if(confirm("Are you sure you want to remove it?"))
-                           {
-                              var id = event.id;
-                              $.ajax({
-                                  url:"delete_calendar.php",
-                                  type:"POST",
-                                  data:{id:id},
-                                  success:function()
-                                  {
-                                     calendar.fullCalendar('refetchEvents');
-                                     alert("Event Removed");
-                                   }
-                                })
-                            }
-                        },
+                            
+                        }
 
                         
 

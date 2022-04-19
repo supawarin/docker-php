@@ -337,7 +337,7 @@ include('connection.php');
                <div class="name_table">
                    <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">timeslips</a></li>
+                            <li class="breadcrumb-item"><a href="timeslips.php">timeslips</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Overview</li>
 
                         </ol>
@@ -379,7 +379,7 @@ include('connection.php');
                        </div>
                        <div class="col-md-10">
                            <label for="description">Description</label>
-                           <textarea class="form-control" rows="5"  id="description" name="description" value=<?=$row['description']?>></textarea>
+                           <textarea class="form-control" rows="5"  id="description" name="description" <?php echo $row['id']? "input" : '';?> ><?echo $row['description'];?></textarea>
                        </div>
                        
                        <div class="col-12">
