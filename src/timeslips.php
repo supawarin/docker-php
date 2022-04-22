@@ -338,7 +338,8 @@ include('connection.php');
                         </ol>
                     </nav>
                    <h2>Timeslips list </h2><br />
-                   <a href="add_timeslip.php" class="btn btn-success mb-4">Add +</a>
+                   <a href="add_timeslip.php" class="btn btn-success mb-4">Add +</a> 
+                   
                
                    <table class="table table-hover" width="95%" name="list-timeslips" id="list-timeslips">
                   <thead class="table-light">
@@ -428,8 +429,8 @@ include('connection.php');
          }
 
      </script>
-              
-              
+     
+      
      </body>
 
           

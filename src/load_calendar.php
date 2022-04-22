@@ -16,6 +16,7 @@
                       'start' => $obj->start_event,
                       'end' => $obj->end_event,
                       'hours' => $obj->hours,
+                      'url' => '/edit_timeslip.php?id=' . $obj->id,
                       'description' => $obj->description
                 );
           }

@@ -340,7 +340,7 @@ include('connection.php');
               
           </header>
                 
-          <!---------modal--------->
+          <!---------modal add new event--------->
           <div class="modal" tabindex="-1" id="addEvent">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -362,6 +362,7 @@ include('connection.php');
       <option>Ekachai</option>
       <option>Praporn</option>
       <option>Elisha</option>
+      <option>Balinder</option>
     </select>
                        </div><br /><br />
                        <div class="col-12">
@@ -396,7 +397,7 @@ include('connection.php');
     </div>
   </div>
 </div>
-               
+              
 
                <div class="name_table">
                    <nav aria-label="breadcrumb">
@@ -505,7 +506,7 @@ include('connection.php');
 
                         eventClick:function(event)
                         {
-                            
+                            $('#editEvent').modal('toggle');
                         }
 
                         

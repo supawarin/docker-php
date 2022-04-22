@@ -3,10 +3,8 @@ session_start();
 
 include('connection.php');
 
-
-
-
-  $id = $_GET['id']; 
+//remeber this is how it works /edit_timeslip.php?id=X
+$id = $_GET['id']; 
 
   $sql = "SELECT  *  FROM events WHERE id='$id' ";
   
@@ -360,6 +358,7 @@ include('connection.php');
       <option>Ekachai</option>
       <option>Praporn</option>
       <option>Elisha</option>
+      <option>Balinder</option>
       
     </select>
                              

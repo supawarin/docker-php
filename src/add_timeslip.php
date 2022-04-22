@@ -358,6 +358,7 @@ include('connection.php');
       <option>Ekachai</option>
       <option>Praporn</option>
       <option>Elisha</option>
+      <option>Balinder</option>
     </select>
                        </div><br /><br />
                        <div class="col-5">
