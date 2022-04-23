@@ -1,6 +1,5 @@
 <?php
-
-      ini_set('display_errors', 1);
+ini_set('display_errors', 1);
       ini_set('display_startup_errors', 1);
       error_reporting(E_ALL);
 session_start();
@@ -8,13 +7,12 @@ session_start();
 include('connection.php');
 
 
+  $id = $_GET['id']; 
 
-
-  //$sql = "SELECT  *  FROM cars";
-  
-  
-  //$result = $conn->query($sql);
-
+  $sql = "SELECT  *  FROM employee WHERE id='$id' ";
+  $result = mysqli_query($conn,$sql);
+  $row = mysqli_fetch_array($result);
+ 
 ?>
 
 
@@ -24,7 +22,7 @@ include('connection.php');
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Calendar Page</title>
+      <title>Edit Employee</title>
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,22 +30,14 @@ include('connection.php');
       <!---------------bootstrap 5 css ------------------>
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-      <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
-      <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">---->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+      <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
-      <!-----------------fullcalendar integration----------------------->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
       
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
       
-    <!---<link href='fullcalendar/lib/main.css' rel='stylesheet' />
-    <link href='fullcalendar/lib/main.min.css' rel='stylesheet' />
-    <script src='fullcalendar/lib/main.js'></script>
-    <script src='fullcalendar/lib/main.min.js'></script>--->
+
+      
+
 
       <!----------------------------style css---------------->
       <style>
@@ -245,6 +235,7 @@ include('connection.php');
                  padding-left: 50px;
              }
              
+
             </style>
   </head>
 
@@ -271,7 +262,7 @@ include('connection.php');
                       <span>Customers</span></a>
                   </li>
                   <li>
-                      <a href="employee.php" class="nav-link "><span class="las la-user-tie"></span>
+                      <a href="employee.php" class="nav-link active "><span class="las la-user-tie"></span>
                       <span>Employee</span></a>
                   </li>
                   <li>
@@ -279,7 +270,7 @@ include('connection.php');
                       <span>Contacts</span></a>
                   </li>
                   <li>
-                      <a href="tasks.php" class="nav-link"><span class="las la-clipboard-list"></span>
+                      <a href="tasks.php" class="nav-link "><span class="las la-clipboard-list"></span>
                       <span>Tasks</span></a>
                   </li>
                   <li>
@@ -303,7 +294,7 @@ include('connection.php');
                       <span>Documents</span></a>
                   </li>
                   <li>
-                      <a href="calendar.php" class="nav-link active"><span class="las la-calendar-alt"></span>
+                      <a href="calendar.php" class="nav-link"><span class="las la-calendar-alt"></span>
                       <span>Calendar</span></a>
                   </li>
                   <li>
@@ -324,7 +315,7 @@ include('connection.php');
               <p>
                   <label for="menu">
                       <span class="las la-bars"></span>
-                  </label><span class="accueil">Calendar</span>
+                  </label><span class="accueil">Edit Employee</span>
                   
               </p>
 
@@ -347,199 +338,75 @@ include('connection.php');
 
               
           </header>
-                
-          <!---------modal add new event--------->
-          <div class="modal" tabindex="-1" id="addEvent">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add New Title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="insert_timeslip.php" class="row g-3" name="new_account" >
+
+               
+
+               <div class="name_table">
+                   <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="employee.php">Employee</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Overview</li>
+
+                        </ol>
+                    </nav>
+                   <h2>Edit Employee  </h2><br />
+                  
+                   <form method="POST" action="update_employee.php" class="row g-3" name="edit_employee" >
+                       <div class="col-md-5">
+                           <label for="id_employee" class="form-label">ID Employee</label>
+                          <input type="number" name="id_employee"  class="form-control" readonly value=<?=$row['id']?> >
+                       </div>
+                       <div class="col-md-5">
+                           <label for="firstname" class="form-label">Firstname</label>
+                          <input type="text" name="firstname" class="form-control" value=<?=$row['firstname']?>>
+                       </div><br /><br />
+                       <div class="col-md-5">
+                           <label for="lastname" class="form-label">Lastname</label>
+                          <input type="text" name="lastname" class="form-control" value=<?=$row['lastname']?>>
+                       </div><br /><br />
+                       <div class="col-5">
+                           <label for="email" class="form-label">Email</label>
+                          <input type="email" name="email" class="form-control" value=<?=$row['email']?>>
+                       </div>
+                       <div class="col-md-5">
+                           <label for="address" class="form-label">Address</label>
+                          <input type="text" name="address" class="form-control" value=<?=$row['address']?>>
+                       </div>
                        
-                       <div class="col-md-12">
-                           <label for="title" class="form-label">Title</label>
-                          <input type="text" name="title" class="form-control" placeholder="title" aria-label="title" required />
+                       <div class="col-md-5">
+                           <label for="rate" class="form-label">Rate</label>
+                          <input type="text" name="rate" class="form-control" value=<?=$row['rate']?> >
                        </div><br /><br />
-                       <div class="col-md-12">
-                           <label for="employee" class="form-label">Employee</label>
-                          <select class="form-select" id="employee" name="employee">
-      <option>Supaporn</option>
-      <option>Ekachai</option>
-      <option>Praporn</option>
-      <option>Elisha</option>
-      <option>Balinder</option>
-    </select>
+                       <div class="col-md-5">
+                           <label for="phone" class="form-label">Phone Number</label>
+                          <input type="text" name="phone" class="form-control" value=<?=$row['phone']?> >
                        </div><br /><br />
-                       <div class="col-12">
-                           <label for="start_event" class="form-label">Start event</label>
-                          <input type="datetime-local" name="start_event" class="form-control" placeholder="Start event" aria-label="start_event" required />
-                       </div>
-                       <div class="col-md-12">
-                           <label for="end_event" class="form-label">End event</label>
-                          <input type="datetime-local" name="end_event" class="form-control" placeholder="End event" aria-label="end_event" required />
-                       </div>
-                       <div class="col-md-12">
-                           <label for="hours" class="form-label">hours</label>
-                          <input type="hours" name="hours" class="form-control" placeholder="hours" aria-label="hours" required />
-                       </div><br /><br />
-                       <div class="col-md-12">
-                           <label for="description">Description</label>
-                           <textarea class="form-control" rows="5"  id="description" name="description"></textarea>
-                       </div>
+                      
                        <div class="col-12">
 
-                       <input type="submit" value="Submit" class="btn btn-success">
-                       <a href="calendar.php" class="btn btn-danger">Cancel</a>
+                       <input type="submit"  value="Update" class="btn btn-success">
+                       <a href="employee.php" class="btn btn-danger">Cancel</a>
                             
                             
                         </div>
 
                    </form>
-      </div>
-      <div class="modal-footer">
-          <h3>CARS </h3>
-      </div>
-    </div>
-  </div>
-</div>
-              
-
-               <div class="name_table">
-                   <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Calendar</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Overview</li>
-
-                        </ol>
-                    </nav>
-                   <h2>Calendar </h2><br />
-
-   
-  
-
-                   <div class="container">
-                       <div id="calendar"></div>
-                   </div>
-
-                   
-
                    
                </div>
-
-               <script>
-                   $(document).ready(function() {
-
-                    var calendar = $("#calendar").fullCalendar({
-                        editable: true,
-                        dayMaxEvents: true,
-                        weekNumbers: true,
-                        eventLimit: true,
-                        eventColor: '#39a693',
-                        
-                        header:{
-                            left:'prev,next today',
-                            center:'title',
-                            right:'month,agendaWeek,agendaDay,listYear'
-                        },
-                        footer:{
-                            left:'prev,next today',
-                            right:'month,agendaWeek,agendaDay,listYear'
-                        },
-                        events: 
-                            'load_calendar.php',
-                         
-                        selectable:true,
-                        selectHelper:true,
-                        
-                        
-
-                       
-                       
-                        
-
-  
-                   
-  
-                        select:function(start,end,allDay)
-                        {
-                            $('#addEvent').modal('toggle');
-                        },
-                        editable:true,
-                        
-                        eventResize:function(event)
-                        {
-                            var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                            var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                            var title = event.title;
-                            var id = event.id;
-                            var employee = event.employee;
-                            var hours = event.hours;
-                            var description = event.description;
-                            $.ajax({
-                               url:"update_calendar.php",
-                               type:"POST",
-                               data:{title:title, start:start, end:end, id:id, employee:employee, hours:hours, description:description
-                            },
-                               success:function(){
-                                   calendar.fullCalendar('refetchEvents');
-                                   alert('Event Update');
-                                }
-                            })
-                        },
-                        editable:true,
-                        eventDrop:function(event)
-                        {
-                            var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
-                            var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
-                            var title = event.title;
-                            var id = event.id;
-                            var employee = event.employee;
-                            var hours = event.hours;
-                            var description = event.description;
-                            $.ajax({
-                                url:"update_calendar.php",
-                                type:"POST",
-                                data:{title:title, start:start, end:end, id:id, employee:employee, hours:hours, description:description
-                                },
-                                success:function()
-                                {
-                                    calendar.fullCalendar('refetchEvents');
-                                    alert("Event Updated");
-                                }
-                            });
-                        },
-
-                        eventClick:function(event)
-                        {
-                            $('#editEvent').modal('toggle');
-                        }
-
-                        
-
-                    });
-                    calendar.render();
-                   });
-               </script>
-
-
-    
-               
                
               
 
-     
+
 
 
      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-     <!--------------datatable------------------
+     <!--------------datatable------------------>
      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>-------->
+     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
      
+              
               
      </body>
 

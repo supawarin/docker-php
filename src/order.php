@@ -1,4 +1,8 @@
 <?php
+
+ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
 session_start();
 
 include('connection.php');
@@ -252,12 +256,20 @@ include('connection.php');
           <div class="sidebar-menu">
               <ul>
                   <li>
-                      <a href="admin.php" class="nav-link"><span class="las la-igloo"></span>
+                      <a href="admin.php" class="nav-link"><span class="las la-tachometer-alt"></span>
                       <span>Dashboard</span></a>
                   </li>
                   <li>
                       <a href="customers.php" class="nav-link"><span class="las la-users"></span>
                       <span>Customers</span></a>
+                  </li>
+                  <li>
+                      <a href="employee.php" class="nav-link "><span class="las la-user-tie"></span>
+                      <span>Employee</span></a>
+                  </li>
+                  <li>
+                      <a href="contact.php" class="nav-link "><span class="las la-address-book"></span>
+                      <span>Contacts</span></a>
                   </li>
                   <li>
                       <a href="tasks.php" class="nav-link "><span class="las la-clipboard-list"></span>

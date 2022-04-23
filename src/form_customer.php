@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
 session_start();
 
 include('connection.php');
@@ -6,13 +9,13 @@ include('connection.php');
 
 
 
-  $id = $_GET['id']; 
+  //$id = $_GET['id']; 
 
-  $sql = "SELECT  *  FROM customers WHERE id='$id' ";
+  //$sql = "SELECT  *  FROM customers WHERE id='$id' ";
   
   
-  $result = mysqli_query($conn,$sql);
-  $row = mysqli_fetch_array($result);
+  //$result = mysqli_query($conn,$sql);
+  //$row = mysqli_fetch_array($result);
 
 ?>
 
@@ -23,7 +26,7 @@ include('connection.php');
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Add New Customers Page</title>
+      <title>Customers Page</title>
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -255,12 +258,20 @@ include('connection.php');
           <div class="sidebar-menu">
               <ul>
                   <li>
-                      <a href="admin.php" class="nav-link"><span class="las la-igloo"></span>
+                      <a href="admin.php" class="nav-link"><span class="las la-tachometer-alt"></span>
                       <span>Dashboard</span></a>
                   </li>
                   <li>
                       <a href="customers.php" class="nav-link active"><span class="las la-users"></span>
                       <span>Customers</span></a>
+                  </li>
+                  <li>
+                      <a href="employee.php" class="nav-link "><span class="las la-user-tie"></span>
+                      <span>Employee</span></a>
+                  </li>
+                  <li>
+                      <a href="contact.php" class="nav-link "><span class="las la-address-book"></span>
+                      <span>Contacts</span></a>
                   </li>
                   <li>
                       <a href="tasks.php" class="nav-link"><span class="las la-clipboard-list"></span>
@@ -308,7 +319,7 @@ include('connection.php');
               <p>
                   <label for="menu">
                       <span class="las la-bars"></span>
-                  </label><span class="accueil">Add New Customers</span>
+                  </label><span class="accueil">Customers</span>
                   
               </p>
 
@@ -331,6 +342,7 @@ include('connection.php');
 
               
           </header>
+
 
                
 
@@ -422,3 +434,4 @@ include('connection.php');
 
 
 </html>
+

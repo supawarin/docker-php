@@ -1,12 +1,15 @@
 <?php
+ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
 
 require_once __DIR__ . '/vendor/autoload.php';
 include('connection.php');
 
 $result = mysqli_query($conn, $sql);
 $itemsHTML = '';
-$sql = "SELECT * FROM events";
-$sql = "SELECT * FROM events WHERE employee LIKE 'Ekachai'";
+//$sql = "SELECT * FROM events";
+$sql = "SELECT * FROM events WHERE employee LIKE 'Supaporn'";
 $result = $conn->query($sql);
 while($row = $result->fetch_assoc())
 {
@@ -155,8 +158,7 @@ $termsHTML = '
 <h3><i>Thank you for your business.</i></h3>
 <p>I certify that this claim is in all respects true, correct, supportable by available documentation, and in compliance with all the terms and
 conditions, laws and regulations governing its payments.</p>
-<p>Please note that our payment terms for this Invoice are NET 15. Interest will be charged on all Invoice that are not paid on time.
- </p>
+
 
 
 </div>

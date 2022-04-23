@@ -270,6 +270,14 @@ include('connection.php');
                       <span>Customers</span></a>
                   </li>
                   <li>
+                      <a href="employee.php" class="nav-link "><span class="las la-users"></span>
+                      <span>Employee</span></a>
+                  </li>
+                  <li>
+                      <a href="contact.php" class="nav-link "><span class="las la-users"></span>
+                      <span>Contacts</span></a>
+                  </li>
+                  <li>
                       <a href="tasks.php" class="nav-link"><span class="las la-clipboard-list"></span>
                       <span>Tasks</span></a>
                   </li>
