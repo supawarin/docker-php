@@ -6,15 +6,14 @@ ini_set('display_errors', 1);
 require_once __DIR__ . '/vendor/autoload.php';
 include('connection.php');
 
-$result = mysqli_query($conn, $sql);
+//$result = mysqli_query($conn, $sql);
 $itemsHTML = '';
-//$sql = "SELECT * FROM events";
+
 $sql = "SELECT * FROM events WHERE employee LIKE 'Supaporn'";
 $result = $conn->query($sql);
 while($row = $result->fetch_assoc())
 {
-$hours = $row['id'] * $row['hours'];
-$totalHours .= $hours;
+
 $itemsHTML .= '<tr><td>'.date("W", strtotime($row['end_event'])).'</td>
 <td>'.$row['title'].'</td>
 <td>'.$row['description'].'</td>
@@ -106,7 +105,7 @@ Page {PAGENO} of {nb}
 
 <div class="col2 floatright" style="padding:15px;">
 <div class="Employee"><h3>Employee : Supaporn </h3></div>
-<div class="date"><h3>DATE : 28/10/2021</h3></div>
+<div class="date"><h3>DATE : 25/04/2022</h3></div>
 <div class="due date"><h3>DUE DATE :11/10/2021</h3></div>
 <div class="project"><h3>PROJECT : Web Design</h3></div>
 </div>

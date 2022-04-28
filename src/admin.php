@@ -240,6 +240,7 @@ ini_set('display_errors', 1);
             }
             .card-single {
                 display: flex;
+                text-decoration: none;
                 background-color: #fff;
                 justify-content: space-between;
                 padding: 2rem;
@@ -251,7 +252,7 @@ ini_set('display_errors', 1);
                 
             }
             .card-single span:last-child {
-                font-size: 3rem;
+                font-size: 2rem;
 
             }
             .card-single small {
@@ -677,8 +678,8 @@ ini_set('display_errors', 1);
                   
                   <div class="card-single">
                       <div>
-                         <h1>55</h1>
-                         <a href="customers.php"><small>Customers</small></a>
+                         <h2>55</h2>
+                         <a href="customers.php" class="nav-link"><small>Customers</small></a>
                       </div>
                       <div>
                          <span class="las la-users"></span>
@@ -688,8 +689,8 @@ ini_set('display_errors', 1);
 
                   <div class="card-single">
                       <div>
-                          <h1>20</h1>
-                          <a href="order.php"><small>Orders</small></a>
+                          <h2>20</h2>
+                          <a href="order.php" class="nav-link"><small>Orders</small></a>
                       </div>
                       <div>
                           <span class="las la-shopping-bag"></span>
@@ -699,8 +700,8 @@ ini_set('display_errors', 1);
 
                   <div class="card-single">
                       <dia>
-                          <h1>39</h1>
-                          <a href="tasks.php"><small>Tasks</small></a>
+                          <h2>39</h2>
+                          <a href="tasks.php" class="nav-link"><small>Tasks</small></a>
                       </dia>
                       <div>
                          <span class="las la-clipboard-list"></span>
@@ -710,7 +711,7 @@ ini_set('display_errors', 1);
 
                   <div class="card-single">
                       <div>
-                          <h1>5k</h1>
+                          <h2>5k</h2>
                           <small>Income</small>
                       </div>
                       <div>
@@ -719,9 +720,11 @@ ini_set('display_errors', 1);
                   </div>
                   
                   <div class="card-single">
+                      
                       <div>
-                          <h1>20</h1>
-                          <small>Model</small>
+                          
+                          <h2>20</h2>
+                          <a href="model.php" class="nav-link"><small>Model</small></a>
                       </div>
                       <div>
                          <span class="las la-car-side"></span>
@@ -729,8 +732,8 @@ ini_set('display_errors', 1);
                   </div>
                   <div class="card-single">
                       <div>
-                          <h1>180</h1>
-                          <small>Documents</small>
+                          <h2>180</h2>
+                          <a href="documents.php" class="nav-link"><small>Documents</small></a>
                       </div>
                       <div>
                          <span class="las la-file"></span>
@@ -738,8 +741,8 @@ ini_set('display_errors', 1);
                   </div>
                   <div class="card-single">
                       <div>
-                          <h1>5</h1>
-                          <small>Accounts</small>
+                          <h2>5</h2>
+                          <a href="accounts.php" class="nav-link"><small>Accounts</small></a>
                       </div>
                       <div>
                          <span class="las la-user-circle"></span>
@@ -747,8 +750,8 @@ ini_set('display_errors', 1);
                   </div>
                   <div class="card-single">
                       <div>
-                          <h1>31</h1>
-                          <small>Invoices</small>
+                          <h2>31</h2>
+                          <a href="invoice.php" class="nav-link"><small>Invoices</small></a>
                       </div>
                       <div>
                          <span class="las la-file-invoice-dollar"></span>
@@ -756,7 +759,7 @@ ini_set('display_errors', 1);
                   </div>
                   <div class="card-single">
                       <div>
-                          <h1>70</h1>
+                          <h2>70</h2>
                           <small>Expenses</small>
                       </div>
                       <div>
@@ -765,8 +768,8 @@ ini_set('display_errors', 1);
                   </div>
                   <div class="card-single">
                       <div>
-                          <h1>50</h1>
-                          <small>Inventory</small>
+                          <h2>50</h2>
+                          <a href="inventory.php" class="nav-link"><small>Inventory</small></a>
                       </div>
                       <div>
                          <span class="las la-warehouse"></span>
@@ -779,7 +782,7 @@ ini_set('display_errors', 1);
                       <div class="case">
                           <div class="header-case">
                               <h2>Lists products</h2>
-                              <button class="button">voir plus <span class="las la-arrow-circle-right"></span></button>
+                              <button class="button">view more <span class="las la-arrow-circle-right"></span></button>
                           </div>
                           <div class="body-case">
                               <div class="table">
@@ -901,7 +904,7 @@ ini_set('display_errors', 1);
 
                               
                           </div>
-                          <button class="btn">voir plus <span class="las la-arrow-circle-right"></span></button>
+                          <button class="btn">view more <span class="las la-arrow-circle-right"></span></button>
                       </div>
                   </div>
 

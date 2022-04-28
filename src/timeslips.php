@@ -351,8 +351,12 @@ include('connection.php');
                     </nav>
                    <h2>Timeslips list </h2><br />
                    <a href="add_timeslip.php" class="btn btn-success mb-4">Add +</a> 
+                         <form action="pdf_gen.php" method="POST">
+                             <button type="submit" name="btn_pdf" target="_blank" class="btn btn-primary"> Print PDF</button>
+                         </form>
+                 
+                    <br />
                    
-               
                    <table class="table table-hover" width="95%" name="list-timeslips" id="list-timeslips">
                   <thead class="table-light">
                      <tr>

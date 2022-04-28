@@ -1,58 +1,42 @@
-<?php 
-//phpinfo();die;
+<?php
 ini_set('display_errors', 1);
-
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
 session_start();
-  
-  
+
+include('connection.php');
 
 
-
-  include('connection.php');
-  //$sql = "SELECT  *  FROM cars";
-  //$result = $conn->query($sql);
 
 
   
-  
-  
-  
-
-  $statement = $conn->prepare("SELECT * FROM tbl_order ORDER BY order_id DESC");
-   
-
-    $statement->execute();
-
-    $all_result = $statement->fetchAll();
-
-    $total_rows = $statement->rowCount();
-
-  
-
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="robots" content="noindex, nofollow">
-        <title>Invoices Page</title>
-        <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Invoice Page</title>
+      <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+      <!---------------bootstrap 5 css ------------------>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-      <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-
-
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+      <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
       
+      
+
+      
+
+
+      <!----------------------------style css---------------->
       <style>
           * {
            padding: 0;
@@ -75,7 +59,7 @@ session_start();
 
             .sidebar-brand {
                 height: 90px;
-                padding: 1rem 0rem 1rem 2rem;
+                padding: 1rem 0rem 2rem 3rem;
                 color: #fff;
 
             }
@@ -92,7 +76,7 @@ session_start();
             .sidebar-menu li {
                 width:100%;
                 margin-bottom: 1.3rem;
-                padding-left: 1rem;
+                
 
             }
             .sidebar-menu a {
@@ -101,10 +85,17 @@ session_start();
                 color: #fff;
                 font-size: 1.1rem;
             }
+            .sidebar-menu a:hover{
+                background: #fff;
+                
+                color: #39a693;
+                border-radius: 30px 0px 0px 30px;
+                
+            }
             .sidebar-menu a.active {
                 background: #fff;
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+                padding-top: .5rem;
+                padding-bottom: .5rem;
                 color: #39a693;
                 border-radius: 30px 0px 0px 30px;
             }
@@ -165,7 +156,15 @@ session_start();
                 margin-right: 6rem;
 
             }
-            
+            table{
+                 
+                 border-collapse: collapse;
+             }
+             th,td{
+                 text-align: center;
+                 padding: 1rem;
+             }
+
             
             .logo-admin {
                 cursor: pointer;
@@ -203,39 +202,43 @@ session_start();
             #menu {
                  display: none;
              }
-             .la-bars{
-                 cursor: pointer;
-             }
              #menu:checked ~ .sidebar{
-                 width: 60px;
+                 width: 80px;
+
                  
              }
+             
              #menu:checked ~ .sidebar .sidebar-brand, h1 span:last-child,
              #menu:checked ~ .sidebar li a span:last-child{
                  display: none;
              }
              #menu:checked ~ .main-content{
-                 margin-left: 60px;
+                 margin-left: 80px;
              }
              #menu:checked ~ .main-content header{
-                 width: calc(100% - 60px);
-                 left: 60px;
+                 width: calc(100% - 80px);
+                 left: 80px;
              }
-             section {
-                
-                
-                padding: 2rem 1.5rem;
-                min-height: calc(100vh);
-                width: calc(100% - 320px);
-            }
-            .container-fluid{
-                margin-top: 100px;
-            }
+             .la-bars{
+                 cursor: pointer;
+                 font-size: 1.3rem;
+             }
+             .name_table{
+                 padding-top: 150px;
+                 padding-left: 50px;
+             }
+             .list-accounts{
+                 padding-top: 50px;
+                 padding-left: 50px;
+             }
+             
+
             </style>
+  </head>
 
-    </head>
+  <body>
 
-    <body>
+      
       <input type="checkbox" name="checkbox" id="menu">
        <!-------------------------------sidebar------------------------------->
       <div class="sidebar">
@@ -252,7 +255,7 @@ session_start();
                       <span>Dashboard</span></a>
                   </li>
                   <li>
-                      <a href="customers.php" class="nav-link"><span class="las la-users"></span>
+                      <a href="customers.php" class="nav-link "><span class="las la-users"></span>
                       <span>Customers</span></a>
                   </li>
                   <li>
@@ -264,31 +267,31 @@ session_start();
                       <span>Contacts</span></a>
                   </li>
                   <li>
-                      <a href="tasks.php"><span class="las la-clipboard-list"></span>
+                      <a href="tasks.php" class="nav-link"><span class="las la-clipboard-list"></span>
                       <span>Tasks</span></a>
                   </li>
                   <li>
-                      <a href="order.php"><span class="las la-shopping-bag"></span>
+                      <a href="order.php" class="nav-link"><span class="las la-shopping-bag"></span>
                       <span>Orders</span></a>
                   </li>
                   <li>
-                      <a href="accounts.php"><span class="las la-user-circle"></span>
+                      <a href="accounts.php" class="nav-link"><span class="las la-user-circle"></span>
                       <span>Accounts</span></a>
                   </li>
                   <li>
-                      <a href="inventory.php"><span class="las la-receipt"></span>
+                      <a href="inventory.php" class="nav-link"><span class="las la-receipt"></span>
                       <span>Inventory</span></a>
                   </li>
                   <li>
-                      <a href="model.php"><span class="las la-car-side"></span>
+                      <a href="model.php" class="nav-link "><span class="las la-car-side"></span>
                       <span>Model cars</span></a>
                   </li>
                   <li>
-                      <a href="documents.php"><span class="las la-file"></span>
+                      <a href="documents.php" class="nav-link"><span class="las la-file"></span>
                       <span>Documents</span></a>
                   </li>
                   <li>
-                      <a href="calendar.php"><span class="las la-calendar-alt"></span>
+                      <a href="calendar.php" class="nav-link"><span class="las la-calendar-alt"></span>
                       <span>Calendar</span></a>
                   </li>
                   <li>
@@ -296,7 +299,7 @@ session_start();
                       <span>Timeslips</span></a>
                   </li>
                   <li>
-                      <a href="invoice.php" class="active"><span class="las la-file-invoice"></span>
+                      <a href="invoice.php" class="nav-link active"><span class="las la-file-invoice"></span>
                       <span>Invoices</span></a>
                   </li>
                   
@@ -309,7 +312,7 @@ session_start();
               <p>
                   <label for="menu">
                       <span class="las la-bars"></span>
-                  </label><span class="accueil">Invoices</span>
+                  </label><span class="accueil">Customers</span>
                   
               </p>
 
@@ -318,98 +321,86 @@ session_start();
                   <input type="search" name="" placehoder="Search here" />
               </div>
 
-              <div id="dropdown" class="user-wrapper">
-                  
-                  <div>
-                      <h3>Hi, <?php  echo $_SESSION['firstname']; ?></h3>
-                      
-                  </div>
-                  <img src="img/avatar-11.png" width="40px" height="40px" class="logo-admin">
-                  
-                  <div class="dropdown-content">
-                      <ul class="dropdown-menu">
-                          <li><a href="userProfile.php">Seting</a></li>
-                          <li><a href="change_password.php" target="_blank">Change Password</a></li>
-                          <li><a href="logout.php"> Logout</a></li>
-                          
-                      </ul>
-                  </div>
+              <div class="dropdown">
+                   
+                   <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                      Hello,<?php  echo $_SESSION['firstname']; ?><img src="img/avatar-11.png" width="30px" height="30px" class="logo-admin">
+                   </button>
+                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <li><a class="dropdown-item" href="edit_accounts.php">Setting</a></li>
+                     <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
+                     <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                   </ul>
+             </div>
 
-              </div>
+              
           </header>
 
-          <section>
-              <div class="container-fluid">
-                  <h2>Invoices List</h2><br />
-                  <div></div><br/>
-              </div>
+               
 
-              <br />
+               <div class="name_table">
+                   <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Invoices</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Overview</li>
 
-              <table id="data-table" class="table table-striped table-bordered" style="width:100%">
-                  <thead>
-                      <tr>
-                          <th>Invoice No.</th>
-                          <th>Invoice Date</th>
-                          <th>Receiver Name</th>
-                          <th>Invoice Total</th>
-                          <th>PDF</th>
-                          <th>Edit</th>
-                          <th>Delete</th>
-                      </tr>
-                  </thead>
+                        </ol>
+                    </nav>
+                   <h2>Invoice list </h2><br />
 
-                  <?php
-                  if($total_rows > 0)
-                  {
-                      foreach($all_result as $row)
-                      {
-                          echo '
-                            <tr>
-                              <td>'.$row["order_no"].'</td>
-                              <td>'.$row["order_date"].'</td>
-                              <td>'.$row["order_receiver_name"].'</td>
-                              <td>'.$row["order_total_after_tax"].'</td>
-                              <td><a href="print_invoice.php?pdf=1&id='.$row["order_id"].'">PDF</a></td>
-                              <td><a href="invoice.php?update=1&id='.$row["order_id"].'"<span class="glyphicon glyphicon-edit"></span></a></td>
-                              <td><a href="#" id="'.$row["order_id"].'" class="delete"><span class="glyphicon glyphicon-remove"></span></a></td>
-                              
-                            </tr>
-                          ';
-                      }
-                  }
+                   <a href="form_invoice.php" class="btn btn-success mb-4">Add +</a>
+               
 
 
-                  ?>
-                  
-              </table>
-
-              <footer class="container-fluid text-center">
-                  <p>Footer Text</p>
-              </footer>
 
 
                
-          </section>
 
-
-
-
-
-
-
-          <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-          <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-          <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+                   
+               </div>
+               
               
+
+
+
+
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+     <!--------------datatable------------------>
+     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+     
+
+     <script>
+         $(document).ready(function() {
+         $('#list-invoice').DataTable();
+         } );
+     </script>
+
+     <script language="JavaScript">
+         function Del(mypage){
+             var agree=confirm("Do you want to delete data?");
+             if(agree){
+                 window.location=mypage;
+             }
+
+         }
+
+     </script>
+              
+     </body>
+
           
 
-          <script tye="text/javascript">
-              $(document).ready(function(){
-                  var table = $('#data-table').DataTable();
-
-              });
-          </script>
-
           
+
+        
+
+
+
+
+
+
+
 </html>

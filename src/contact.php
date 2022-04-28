@@ -23,7 +23,7 @@ include('connection.php');
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Tasks Page</title>
+      <title>Contact List </title>
       <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -352,6 +352,76 @@ include('connection.php');
                     </nav>
                    <h2>Contacts list </h2><br />
 
+                   <a href="form_contact.php" class="btn btn-success mb-4">Add +</a>
+               
+
+
+
+
+               <table class="table table-hover" width="95%" name="list-contact" id="list-contact">
+                  <thead class="table-light">
+                     <tr>
+                         <th><b>Id</b></th>
+                         <th><b>Firstname </b></th>
+                         <th><b>Lastname</b></th>
+                         <th><b>Address</b></th>
+                         <th><b>Company</b></th>
+                         <th><b>Email</b></th>
+                         <th><b>Phone</b></th>
+                         <th><b>Edit</b></th>
+                         <th><b>Delete</b></th>
+                         
+                      
+
+                        </tr>
+                 </thead>
+                  <tbody>
+                        <?php
+                            $sql = "SELECT  *  FROM contact";
+  
+  
+                           $result = $conn->query($sql);
+                           //$result=mysqli_query($conn,$sql);
+                           while($row = $result->fetch_assoc()):
+                          ?>
+
+
+                        <tr>
+                            <td><?php echo $row["id"]; ?></td>
+                            <td><?php echo $row["firstname"]; ?></td>
+                            <td><?php echo $row["lastname"]; ?></td>
+                            <td><?php echo $row["address"]; ?></td>
+                            <td><?php echo $row["company"]; ?></td>
+                            <td><?php echo $row["email"]; ?></td>
+                            <td><?php echo $row["phone"]; ?></td>
+                            
+                            
+
+                            <td><a href="edit_contact.php?id=<?=$row["id"]?>" class="btn btn-warning">Edit</a></td>
+                            <td><a href="delete_contact.php?id=<?=$row["id"]?>" class="btn btn-danger" onclick="Del(this.href);return false;">Delete</a></td>
+                       </tr>
+                         <?php endwhile ?>
+                    </tbody>
+                    <tfoot class="table-light">
+                     <tr>
+                         <th><b>Id</b></th>
+                         <th><b>Firstname </b></th>
+                         <th><b>Lastname</b></th>
+                         <th><b>Address</b></th>
+                         <th><b>Company</b></th>
+                         <th><b>Email</b></th>
+                         <th><b>Phone</b></th>
+                         <th><b>Edit</b></th>
+                         <th><b>Delete</b></th>
+                         
+                      
+
+                        </tr>
+                 </tfoot>
+                  
+                </table>
+
+
                    
                </div>
                
@@ -367,6 +437,23 @@ include('connection.php');
      <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
      <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
      
+     <script>
+         $(document).ready(function() {
+         $('#list-contact').DataTable();
+         } );
+     </script>
+
+     <script language="JavaScript">
+         function Del(mypage){
+             var agree=confirm("Do you want to delete data?");
+             if(agree){
+                 window.location=mypage;
+             }
+
+         }
+
+     </script>
+              
               
      </body>
 

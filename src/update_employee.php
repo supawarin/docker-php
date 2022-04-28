@@ -6,15 +6,15 @@
 include('connection.php');
 
 
-$id=$_POST['id'];
+$id=$_POST['id_employee'];
 $firstname=$_POST['firstname'];
 $lastname=$_POST['lastname'];
 $email=$_POST['email'];
 $address=$_POST['address'];
-$rate=$_POST['rate'];
 $phone=$_POST['phone'];
+$rate=$_POST['rate'];
 
-$sql = "UPDATE employee set firstname='$firstname', lastname='$lastname', email='$email', address='$address', phone='$phone',rate='$rate'   WHERE id= '$id' ";
+$sql = "UPDATE employee set firstname='$firstname', lastname='$lastname', email='$email', address='$address', phone='$phone', rate='$rate'   WHERE id= '$id' ";
 
 $result=mysqli_query($conn,$sql);
 if($result){
